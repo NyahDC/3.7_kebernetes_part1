@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ninadc-nginx-deployment
+  namespace: ninadc-eks-activity
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+        name: uploadsvc
+    spec:
+      serviceAccountName: ninadc-nginx-service-account
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80

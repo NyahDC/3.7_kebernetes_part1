@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ninadc-nginx-service
+  namespace: ninadc-eks-activity
+spec:
+  type: LoadBalancer
+  selector:
+    name: uploadsvc
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
